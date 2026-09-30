@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ✅ MÃ MONETAG — KIẾM TIỀN TỪ LƯỢT XEM -->
+    <meta name="monetag" content="387817206992c916d4665010d111e9e9">
+    
+    <title>PUBG PC — Drama & Tin Tức | DK FUTURE TECH</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
+        :root {
+            --red: #ff4444; --red-soft: rgba(255,68,68,0.12);
+            --gold: #ffcc00; --gold-soft: rgba(255,204,0,0.1);
+            --green: #00ff88; --blue: #0096ff;
+            --bg-dark: #0a0a0f; --bg-card: rgba(255,255,255,0.03);
+            --border: rgba(255,255,255,0.08);
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #12121f 100%);
+            color: #fff;
+            padding: 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+        .brand { color: var(--gold); font-size: 1rem; letter-spacing: 3px; margin-bottom: 8px; }
+        h1 { font-size: 2rem; color: var(--red); text-shadow: 0 0 20px rgba(255,68,68,0.3); }
+        .subtitle { color: #888; margin-top: 8px; }
+
+        /* === DRAMA CHÍNH === */
+        .drama-main {
+            background: linear-gradient(135deg, rgba(255,68,68,0.12) 0%, rgba(255,153,0,0.06) 100%);
+            border: 2px solid var(--red);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 35px;
+            box-shadow: 0 0 25px rgba(255,68,68,0.15);
+        }
+        .drama-badge {
+            display: inline-block;
+            background: var(--red);
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
+        .drama-title { font-size: 1.4rem; margin-bottom: 15px; color: var(--gold); line-height: 1.4; }
+        .drama-meta { font-size: 0.85rem; color: #888; margin-bottom: 20px; display: flex; gap: 15px; flex-wrap: wrap; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
+        .profile-card {
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            padding: 15px;
+            border-left: 3px solid var(--gold);
+        }
+        .profile-name { font-weight: bold; font-size: 1.05rem; margin-bottom: 5px; }
+        .profile-role { color: #888; font-size: 0.85rem; margin-bottom: 10px; }
+        .profile-achievement { font-size: 0.85rem; color: #aaa; line-height: 1.6; }
+
+        /* === TRÌNH TỰ DIỄN BIẾN === */
+        .timeline { border-left: 2px solid var(--gold); padding-left: 22px; margin: 25px 0; }
+        .timeline-item { margin-bottom: 20px; position: relative; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -28px; top: 6px;
+            width: 12px; height: 12px; background: var(--gold); border-radius: 50%;
+            box-shadow: 0 0 10px var(--gold);
+        }
+        .timeline-date { font-weight: bold; color: var(--gold); font-size: 0.9rem; }
+        .timeline-text { color: #ddd; margin-top: 6px; line-height: 1.7; font-size: 0.95rem; }
+        .timeline-text b { color: #fff; }
+
+        /* === THỐNG KÊ === */
+        .stat-box {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 12px; margin: 20px 0;
+        }
+        .stat-item {
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+            padding: 15px; text-align: center;
+            border: 1px solid var(--border);
+        }
+        .stat-num { font-size: 1.5rem; font-weight: bold; color: var(--gold); }
+        .stat-label { font-size: 0.8rem; color: #888; margin-top: 4px; }
+
+        /* === TIN TỨC TỰ ĐỘNG === */
+        .section-title {
+            font-size: 1.3rem; margin: 45px 0 20px;
+            display: flex; align-items: center; gap: 10px;
+            padding-bottom: 8px; border-bottom: 1px solid var(--border);
+        }
+        .update-bar {
+            display: flex; justify-content: space-between; align-items: center;
+            color: #666; font-size: 0.85rem; margin-bottom: 15px;
+        }
+        .refresh-btn {
+            background: rgba(0,255,136,0.15);
+            color: var(--green); border: none; padding: 5px 12px;
+            border-radius: 15px; cursor: pointer; font-size: 0.8rem;
+        }
+        .news-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 12px; padding: 18px; margin-bottom: 12px;
+            transition: 0.3s;
+        }
+        .news-card:hover { transform: translateX(5px); border-color: var(--gold); }
+        .news-tag {
+            display: inline-block;
+            padding: 3px 10px; border-radius: 15px;
+            font-size: 0.75rem; font-weight: bold; margin-bottom: 8px;
+        }
+        .tag-drama { background: rgba(255,68,68,0.15); color: #ff6666; }
+        .tag-news { background: rgba(0,150,255,0.15); color: #66ccff; }
+        .tag-update { background: rgba(0,255,136,0.15); color: var(--green); }
+        .tag-official { background: rgba(255,204,0,0.15); color: var(--gold); }
+        .news-title { font-size: 1rem; margin-bottom: 6px; color: #fff; }
+        .news-desc { color: #aaa; font-size: 0.9rem; line-height: 1.5; margin-bottom: 8px; }
+        .news-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: #666; }
+        .news-link { color: var(--gold); text-decoration: none; }
+        .loading { text-align: center; padding: 30px; color: #888; }
+        .spinner {
+            display: inline-block; width: 25px; height: 25px;
+            border: 3px solid rgba(255,204,0,0.2);
+            border-top-color: var(--gold); border-radius: 50%;
+            animation: spin 1s linear infinite; margin-bottom: 10px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .note-box {
+            background: rgba(0,150,255,0.08);
+            border-left: 3px solid var(--blue);
+            padding: 12px 15px; border-radius: 0 8px 8px 0;
+            margin: 20px 0; font-size: 0.9rem; color: #ccc;
+        }
+        footer {
+            text-align: center; margin-top: 50px; color: #555;
+            font-size: 0.85rem; padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .author { color: #00f0ff; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="brand">DK FUTURE TECH 🎮</div>
+            <h1>PUBG PC — DRAMA & TIN TỨC</h1>
+            <p class="subtitle">Cập nhật tự động — Chính xác từ nguồn báo chính thống</p>
+        </header>
+
+        <!-- DRAMA CHÍNH: TANVUU & HIMASS -->
+        <div class="drama-main">
+            <span class="drama-badge">🔥 DRAMA LỚN NHẤT LỊCH SỬ PUBG VIỆT NAM</span>
+            <h2 class="drama-title">TanVuu & Himass — Bị cấm vĩnh viễn tại PUBG Asia Stars 2026</h2>
+            <div class="drama-meta">
+                <span>📅 17–30/09/2026</span>
+                <span>🏆 Giải: PUBG Asia Stars 2026</span>
+                <span>💰 Tổng giải thưởng: 70.000 USD</span>
+                <span>👥 48 tuyển thủ — 6 quốc gia</span>
+            </div>
+
+            <div class="two-col">
+                <div class="profile-card">
+                    <div class="profile-name">TanVuu — Trần Tấn Vũ 🇻🇳</div>
+                    <div class="profile-role">Tuyển thủ chuyên nghiệp</div>
+                    <div class="profile-achievement">
+                        ✅ Vô địch PGC 2024<br>
+                        ✅ Đội tuyển Quốc gia PNC 2025<br>
+                        ✅ Một trong những tay súng mạnh nhất thế giới
+                    </div>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-name">Himass — Lã Phương Tiến Đạt 🇻🇳</div>
+                    <div class="profile-role">Tuyển thủ — MVP PNC 2025</div>
+                    <div class="profile-achievement">
+                        ✅ MVP khu vực APAC — PNC 2025<br>
+                        ✅ Kỷ lục số mạng hạ gục tại giải quốc tế<br>
+                        ✅ PUBG Partner chính thức Việt Nam
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">📌 Ngày 17/09/2026 — Vụ việc bắt đầu</div>
+                    <div class="timeline-text">Giải PUBG Asia Stars 2026 chính thức khởi tranh. Ngay trong ngày thi đấu đầu tiên, nữ streamer Hàn Quốc <b>Soopi</b> (thuộc đội Gen.G) đăng tải trạng thái tố <b>TanVuu & Himass</b> có hành vi "đá stream" — theo dõi livestream để biết vị trí đối thủ sau khi bị họ hạ gục.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">📌 Ngày 18/09 — KRAFTON vào cuộc điều tra</div>
+                    <div class="timeline-text">KRAFTON xác nhận: hai tuyển thủ đã <b>mở màn hình phụ xem livestream</b> trong lúc thi đấu. TanVuu & Himass thừa nhận hành vi nhưng khẳng định <b>không dùng thông tin để trục lợi</b> trong ván đấu. Bị loại khỏi phần còn lại của giải, tước tư cách PUBG Partner Việt Nam.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">📌 Ngày 19–22/09 — Phản ứng lan tỏa</div>
+                    <div class="timeline-text">Cộng đồng chia rẽ: phía Hàn Quốc ủng hộ hình phạt; phía Việt Nam cho rằng <b>quy định không rõ ràng</b> từ đầu. Ngày thi đấu cuối của giải bị <b>hủy bỏ</b> trong hỗn loạn.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">📌 Ngày 23/09 — Án phạt nặng nhất</div>
+                    <div class="timeline-text"><b>KRAFTON ra quyết định cấm vĩnh viễn</b>: cấm tham gia mọi giải đấu chính thức, khóa tài khoản liên kết. Chưa công bố bằng chứng chứng minh hai người <b>đã dùng thông tin để thắng</b> ván đấu.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">📌 Ngày 24–26/09 — Làn sóng phản đối</div>
+                    <div class="timeline-text">✅ Hơn <b>4 triệu lượt ký đơn</b> đòi công bằng<br>✅ Nhiều phòng máy tuyên bố gỡ PUBG<br>✅ Streamer, game thủ lớn tẩy chay<br>✅ KRAFTON xin lỗi về <b>thiếu sót quy định</b> nhưng không rút lại án phạt</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">📌 Ngày 27–30/09 — Tình hình hiện tại</div>
+                    <div class="timeline-text">Hai tuyển thủ lên truyền thông làm rõ. KRAFTON vẫn giữ nguyên quyết định. Chưa có phương án giải quyết cuối cùng.</div>
+                </div>
+            </div>
+
+            <div class="stat-box">
+                <div class="stat-item">
+                    <div class="stat-num">4Tr+</div>
+                    <div class="stat-label">Chữ ký đòi công bằng</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">Vĩnh viễn</div>
+                    <div class="stat-label">Thời gian cấm</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">6</div>
+                    <div class="stat-label">Quốc gia tham gia</div>
+                </div>
+            </div>
+
+            <div class="note-box">
+                ⚠️ <b>Lưu ý:</b> Thông tin dựa trên báo Thanh Niên, Dân Trí, ZingNews. Tình hình vẫn đang diễn biến.
+            </div>
+        </div>
+
+        <!-- TIN TỨC TỰ ĐỘNG CẬP NHẬT -->
+        <h2 class="section-title">📰 Tin tức mới nhất — Tự động cập nhật</h2>
+        <div class="update-bar">
+            <span id="updateTime">Đang kiểm tra cập nhật...</span>
+            <button class="refresh-btn" onclick="loadAllNews()">🔄 Làm mới</button>
+        </div>
+        <div id="newsContainer">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Đang lấy tin tức...</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Nguồn: Thanh Niên, Dân Trí, Zing News</p>
+            <p class="author">Vũ Đăng Khoa — DK FUTURE TECH 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        const NEWS_SOURCES = [
+            { url: 'https://api.rss2json.com/v1/api.json?rss_url=https://dantri.com.vn/rss/the-thao-dien-tu.rss', name: 'Dân Trí' },
+            { url: 'https://api.rss2json.com/v1/api.json?rss_url=https://thanhnien.vn/rss/giai-tri/the-thao-dien-tu.rss', name: 'Thanh Niên' },
+            { url: 'https://api.rss2json.com/v1/api.json?rss_url=https://zingnews.vn/rss/giai-tri.rss', name: 'Zing News' }
+        ];
+
+        const KEYWORDS = [
+            'pubg', 'tấn vũ', 'tanvuu', 'himass', 'tiến đạt', 'krafton',
+            'asia stars', 'stream sniping', 'đá stream', 'cấm thi đấu',
+            'tẩy chay pubg', 'justiceforpubgvn', 'soopi', 'gen.g'
+        ];
+
+        async function loadAllNews() {
+            const container = document.getElementById('newsContainer');
+            container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Đang cập nhật...</p></div>';
+            
+            let allNews = [];
+            for (const src of NEWS_SOURCES) {
+                try {
+                    const res = await fetch(src.url);
+                    const data = await res.json();
+                    if (data.status === 'ok') {
+                        data.items.forEach(item => {
+                            const title = item.title.toLowerCase();
+                            const summary = (item.description || '').toLowerCase();
+                            if (!KEYWORDS.some(k => title.includes(k) || summary.includes(k))) return;
+                            
+                            let tagClass = 'tag-news', tagText = 'TIN';
+                            if (title.includes('cấm') || title.includes('phạt') || title.includes('tranh cãi') || title.includes('tố')) {
+                                tagClass = 'tag-drama'; tagText = 'DRAMA ⚠️';
+                            } else if (title.includes('krafton') || title.includes('thông báo') || title.includes('quyết định')) {
+                                tagClass = 'tag-official'; tagText = 'CHÍNH THỨC 📢';
+                            } else if (title.includes('cập nhật') || title.includes('phiên bản')) {
+                                tagClass = 'tag-update'; tagText = 'CẬP NHẬT ✅';
+                            } else if (title.includes('tanvuu') || title.includes('himass') || title.includes('tấn vũ')) {
+                                tagClass = 'tag-drama'; tagText = 'TANVUU/HIMASS 🔥';
+                            }
+                            
+                            allNews.push({
+                                title: item.title,
+                                description: item.description.replace(/<[^>]*>/g, ''),
+                                link: item.link,
+                                pubDate: item.pubDate,
+                                source: src.name,
+                                tagClass, tagText
+                            });
+                        });
+                    }
+                } catch (e) { console.log('Lỗi:', src.name); }
+            }
+
+            allNews.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+            container.innerHTML = '';
+            
+            if (allNews.length === 0) {
+                container.innerHTML = '<p style="color:#888;text-align:center;padding:20px;">Chưa có tin mới. Nhấn "Làm mới" sau nhé!</p>';
+            } else {
+                allNews.slice(0, 10).forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'news-card';
+                    card.innerHTML = `
+                        <span class="news-tag ${item.tagClass}">${item.tagText}</span>
+                        <h3 class="news-title">${item.title}</h3>
+                        <p class="news-desc">${item.description.substring(0, 130)}...</p>
+                        <div class="news-meta">
+                            <span>${item.source} · ${new Date(item.pubDate).toLocaleDateString('vi-VN')}</span>
+                            <a href="${item.link}" target="_blank" class="news-link">Đọc bài gốc →</a>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+            document.getElementById('updateTime').innerHTML = `✅ Cập nhật: ${new Date().toLocaleString('vi-VN')}`;
+        }
+
+        loadAllNews();
+        setInterval(loadAllNews, 20 * 60 * 1000);
+    </script>
+</body>
+</html>
